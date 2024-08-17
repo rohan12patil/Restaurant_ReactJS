@@ -1,5 +1,20 @@
-npm init
+# Commands
 
-npm install -D parcel
+- npm init
+- npm install -D parcel
+- npm install react react-dom
+- npx parcel index.html
 
-npm install react react-dom
+
+# Parcel
+
+- Dev Build
+- Local Server
+- HMR - Hot Module Replacement
+- File Watching Algorithm
+- Caching - faster builds
+- Image Optimization
+- Minification
+- `Bundling
+- 
+ 

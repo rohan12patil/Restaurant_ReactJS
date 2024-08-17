@@ -2,10 +2,10 @@
   "name": "reactjs",
   "version": "1.0.0",
   "description": "React Learnings",
-  "main": "App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel index.html"
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html"
   },
   "repository": {
     "type": "git",
