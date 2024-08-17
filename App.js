@@ -36,10 +36,40 @@ const Header = () => {
   );
 };
 
+const RestaurantCard = () => {
+  return (
+    <div className='res-card'>
+      <h3>Taste of India</h3>
+      <img src='https://www.mytasteofindia.com/site/assets/images/uploads/69_4_c677058d84f8_o.jpg'></img>
+      <h3>Biryani, Curries & much more</h3>
+      <h4>4.6 Stars</h4>
+    </div>
+  );
+};
+
+const Body = () => {
+  return (
+    <div className='body'>
+      <div className='search-container'>Search</div>
+      <div className='restaurant-container'>
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+      </div>
+    </div>
+  );
+};
+
 const AppLayout = () => {
   return (
     <div>
       <Header />
+      <Body />
     </div>
   );
 };
