@@ -36,14 +36,13 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = (props) => {
-  console.log(props);
+const RestaurantCard = ({ name, cuisine, rating }) => {
   return (
     <div className='res-card'>
-      <h3>{props.name}</h3>
+      <h3>{name}</h3>
       <img src='https://www.mytasteofindia.com/site/assets/images/uploads/69_4_c677058d84f8_o.jpg'></img>
-      <h3>{props.cuisine}</h3>
-      <h4>{props.rating} Stars</h4>
+      <h3>{cuisine}</h3>
+      <h4>{rating} Stars</h4>
     </div>
   );
 };
