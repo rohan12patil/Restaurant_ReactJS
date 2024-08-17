@@ -36,13 +36,14 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
+  console.log(props);
   return (
     <div className='res-card'>
-      <h3>Taste of India</h3>
+      <h3>{props.name}</h3>
       <img src='https://www.mytasteofindia.com/site/assets/images/uploads/69_4_c677058d84f8_o.jpg'></img>
-      <h3>Biryani, Curries & much more</h3>
-      <h4>4.6 Stars</h4>
+      <h3>{props.cuisine}</h3>
+      <h4>{props.rating} Stars</h4>
     </div>
   );
 };
@@ -52,14 +53,16 @@ const Body = () => {
     <div className='body'>
       <div className='search-container'>Search</div>
       <div className='restaurant-container'>
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard
+          name='Taste Of India'
+          cuisine='North Indian, Indo-Chinese '
+          rating='4.5'
+        />
+        <RestaurantCard
+          name='Bombay Curry'
+          cuisine='Indian, Indo-Chinese, Biryani, Kebab  '
+          rating='4.2'
+        />
       </div>
     </div>
   );
