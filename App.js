@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import logo from './assets/imgs/restaurant.png';
+import { resList } from './data';
 /**
  *
  * Header
@@ -17,6 +18,9 @@ import logo from './assets/imgs/restaurant.png';
  *  - Address
  *  - Contact
  */
+
+const imgURL =
+  'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
 
 const Header = () => {
   return (
@@ -36,13 +40,17 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = ({ name, cuisine, rating }) => {
+const RestaurantCard = (props) => {
+  const { resData } = props;
+  const { name, cloudinaryImageId, cuisines, avgRating, deliveryTime } =
+    resData?.info;
   return (
     <div className='res-card'>
       <h3>{name}</h3>
-      <img src='https://www.mytasteofindia.com/site/assets/images/uploads/69_4_c677058d84f8_o.jpg'></img>
-      <h3>{cuisine}</h3>
-      <h4>{rating} Stars</h4>
+      <img src={imgURL + cloudinaryImageId}></img>
+      <h3>{cuisines.join(', ')}</h3>
+      <h4>{avgRating} Stars</h4>
+      <h4>{deliveryTime}</h4>
     </div>
   );
 };
@@ -52,16 +60,8 @@ const Body = () => {
     <div className='body'>
       <div className='search-container'>Search</div>
       <div className='restaurant-container'>
-        <RestaurantCard
-          name='Taste Of India'
-          cuisine='North Indian, Indo-Chinese '
-          rating='4.5'
-        />
-        <RestaurantCard
-          name='Bombay Curry'
-          cuisine='Indian, Indo-Chinese, Biryani, Kebab  '
-          rating='4.2'
-        />
+        <RestaurantCard resData={resList[0]} />
+        <RestaurantCard resData={resList[1]} />
       </div>
     </div>
   );
