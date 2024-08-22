@@ -1,9 +1,26 @@
 import { RestaurantCard } from './RestaurantCard';
-import { resList } from '../utils/mockData';
-import { useState } from 'react';
+import { RESTAURANT_LIST_URL } from '../utils/constants';
+import { useEffect, useState } from 'react';
 
 export const Body = () => {
-  const [restaurantList, setrestaurantList] = useState(resList);
+  const [restaurantList, setrestaurantList] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(RESTAURANT_LIST_URL);
+    const result = await data.json();
+    console.log(
+      result.data.success.cards[1].card.card.gridElements.infoWithStyle
+        .restaurants
+    );
+    setrestaurantList(
+      result.data.success.cards[1].card.card.gridElements.infoWithStyle
+        .restaurants
+    );
+  };
 
   return (
     <div className='body'>
@@ -11,7 +28,7 @@ export const Body = () => {
       <button
         onClick={() => {
           let filteredList = restaurantList.filter(
-            (res) => res.info.avgRating > 4
+            (res) => res.info.avgRating > 4.3
           );
           setrestaurantList(filteredList);
         }}
