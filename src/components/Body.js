@@ -17,8 +17,8 @@ export const Body = () => {
         .restaurants
     );
     setrestaurantList(
-      result.data.success.cards[1].card.card.gridElements.infoWithStyle
-        .restaurants
+      result?.data?.success?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   };
 
