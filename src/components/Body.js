@@ -22,6 +22,10 @@ export const Body = () => {
     );
   };
 
+  if (restaurantList.length === 0) {
+    return <h1>Loading .....</h1>;
+  }
+
   return (
     <div className='body'>
       <div className='search-container'>Search</div>
