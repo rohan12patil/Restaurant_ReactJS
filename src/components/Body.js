@@ -1,6 +1,7 @@
 import { RestaurantCard } from './RestaurantCard';
 import { RESTAURANT_LIST_URL } from '../utils/constants';
 import { useEffect, useState } from 'react';
+import Shimmer from './shimmer';
 
 export const Body = () => {
   const [restaurantList, setrestaurantList] = useState([]);
@@ -23,7 +24,7 @@ export const Body = () => {
   };
 
   if (restaurantList.length === 0) {
-    return <h1>Loading .....</h1>;
+    return <Shimmer />;
   }
 
   return (
