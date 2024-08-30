@@ -4,6 +4,7 @@
 - npm install -D parcel
 - npm install react react-dom
 - npx parcel index.html
+- npm i react-router-dom
 
 # Parcel
 
