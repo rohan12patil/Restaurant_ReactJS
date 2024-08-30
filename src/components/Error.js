@@ -5,7 +5,9 @@ export const Error = () => {
   console.log(err);
   return (
     <div>
-      <h1>Error: Page not found</h1>
+      <h1>
+        {err.status}: {err.statusText} - {err.data}
+      </h1>
     </div>
   );
 };

@@ -1,6 +1,3 @@
-* {
-  font-size: 1rem;
-}
 #root {
   margin: 1rem;
   padding: 1rem;
@@ -24,7 +21,10 @@
       li {
         display: inline;
         padding: 0.8rem;
-        font-size: 1.5rem;
+
+        a {
+          font-size: 1.5rem;
+        }
       }
     }
   }

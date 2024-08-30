@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../../assets/imgs/restaurant.png';
 
 export const Header = () => {
@@ -8,10 +9,15 @@ export const Header = () => {
       </div>
       <div className='navbar'>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
+          <li>
+            <Link to='/'> Home</Link>
+          </li>
+          <li>
+            <Link to='/about'> About</Link>
+          </li>
+          <li>
+            <Link to='/contact'> Contact</Link>
+          </li>
         </ul>
       </div>
     </div>
