@@ -1,28 +1,32 @@
 import { useEffect, useState } from 'react';
 import Shimmer from './shimmer';
-import { IMG_CDN_URL } from '../utils/constants';
+import { IMG_CDN_URL, MENU_URL } from '../utils/constants';
+import { useParams } from 'react-router-dom';
 
 export const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const [resMenu, setResMenu] = useState(null);
+  const { resId } = useParams();
+  console.log('ID:::', resId);
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(
-      'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5204303&lng=73.8567437&restaurantId=508883&catalog_qa=undefined&submitAction=ENTER'
-    );
+    const data = await fetch(MENU_URL + resId);
     const json = await data.json();
+    // console.log('1:: ', json.data.cards[2].card.card.info);
     console.log(
+      'check:: ',
       json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .categories[0].itemCards
+        .carousel
     );
+
     setResInfo(json.data.cards[2].card.card.info);
     setResMenu(
       json.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.categories[0]?.itemCards
+        ?.card?.carousel
     );
   };
 
@@ -31,7 +35,6 @@ export const RestaurantMenu = () => {
 
   return (
     <div>
-      {/* Uncomment and use resInfo to display restaurant details */}
       <div>
         <img
           src={IMG_CDN_URL + resInfo.cloudinaryImageId}
@@ -46,14 +49,14 @@ export const RestaurantMenu = () => {
           </div>
         ))}
       </div>
-
       <br />
-
+      Menu
       <div>
         {resMenu.map((menu, index) => (
-          <div key={menu?.card?.info?.id}>
+          <div key={menu?.dish?.info?.id}>
             <p>
-              {index + 1}. {menu.card.info.name} - ₹{menu.card.info.price / 100}
+              {index + 1}. {menu.dish?.info.name} - ₹
+              {menu.dish?.info.price / 100}
             </p>
           </div>
         ))}
