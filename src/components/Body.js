@@ -15,10 +15,8 @@ export const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_URL);
     const result = await data.json();
-
     let resData =
-      result.data.success.cards[1].card.card.gridElements.infoWithStyle
-        .restaurants;
+      result.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
 
     setrestaurantList(resData);
     setfilteredRestaurantList(resData);
@@ -51,7 +49,7 @@ export const Body = () => {
       <button
         onClick={() => {
           let filteredList = filteredRestaurantList.filter(
-            (res) => res.info.avgRating > 4.3
+            (res) => res.info.avgRating > 4.1
           );
           setrestaurantList(filteredList);
         }}
