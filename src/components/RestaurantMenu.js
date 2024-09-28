@@ -16,18 +16,27 @@ export const RestaurantMenu = () => {
   const fetchMenu = async () => {
     const data = await fetch(MENU_URL + resId);
     const json = await data.json();
-    // console.log('1:: ', json.data.cards[2].card.card.info);
     console.log(
-      'check:: ',
+      'check 1:: ',
+      json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
+    );
+    console.log(
+      'check 2 :: ',
       json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
         .carousel
     );
 
     setResInfo(json.data.cards[2].card.card.info);
-    setResMenu(
-      json.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.carousel
-    );
+    json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
+      .carousel
+      ? setResMenu(
+          json.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
+            ?.card?.card?.carousel
+        )
+      : setResMenu(
+          json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
+            .itemCards
+        );
   };
 
   // Show Shimmer until menu is loaded
@@ -52,6 +61,7 @@ export const RestaurantMenu = () => {
       <br />
       Menu
       <div>
+        if(resMenu.dish):(
         {resMenu.map((menu, index) => (
           <div key={menu?.dish?.info?.id}>
             <p>
@@ -60,6 +70,7 @@ export const RestaurantMenu = () => {
             </p>
           </div>
         ))}
+        ):( )
       </div>
     </div>
   );
